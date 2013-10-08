@@ -92,7 +92,7 @@ The first command you'll want to issue is to select the database:
 
 This creates the database if it isn't created yet. Here are some common commands:
 
-```
+```bash
 > db.things.save({ a : 1, b : 2, c : 3})
 > db.things.find()
 { "_id" : ObjectId("52535e464a33ac3bdbb08566"), "a" : 1, "b" : 2, "c" : 3 }
@@ -119,9 +119,10 @@ Which of the following expressions are valid JSON documents? Check all that appl
 
 Issue the following commands in the Mongo Shell.
 
-```
+```bash
 > db.test.save({a:1, b:1, fruits:['apple','orange','pear']})
-> db.test.save({name:"casey", address:{street:"elm drive", city:"Morrow", zip:"30260", house_number: 6551}})
+> db.test.save({name:"casey", address:{street:"elm drive", city:"Morrow", 
+    zip:"30260", house_number: 6551}})
 > db.test.find().pretty()
 { "_id" : ObjectId("52535e2e4a33ac3bdbb08565"), "a" : 1 }
 { "_id" : ObjectId("52535e464a33ac3bdbb08566"), "a" : 1, "b" : 2, "c" : 3 }
@@ -358,7 +359,7 @@ public class HelloWorldFreemarkerStyle {
             // Print out the results
             System.out.println(writer);
         } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
 
     }
@@ -421,7 +422,7 @@ public class HelloWorldSparkFreemarkerStyle {
                     helloTemplate.process(helloMap, writer);
                 } catch (Exception e) {
                     halt(500);
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    e.printStackTrace();
                 }
 
                 // Return the HTML to be served by spark
@@ -495,7 +496,7 @@ public class HelloWorldMongoDBSparkFreemarkerStyle {
 
                 } catch (Exception e) {
                     halt(500);
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    e.printStackTrace();
                 }
 
                 // Return the HTML to be served by spark
@@ -507,3 +508,67 @@ public class HelloWorldMongoDBSparkFreemarkerStyle {
 ```
 
 If you run this and navigate to http://localhost:4567 in your browser you should be greeted with __Hello MongoDB!__
+
+# Spark framework: Handling GET Requests
+
+[Lecture Video](https://www.youtube.com/watch?v=7t1IafamuVs#t=22)
+
+This section is very simple, and watching the video should suffice.
+
+# Spark framework: Handling POST Requests
+
+[Lecture Video](https://www.youtube.com/watch?v=jZDuxesy5cc)
+
+This is an optional section showing how Spark handles POST requests.
+
+# Mongo is Schemaless
+
+In MongoDB, you don't have to alter tables to add columns, etc. Each document can have a different schema.
+
+Here are some examples of things you can do with Mongo's schema.
+
+```bash
+> db.users.save({name:"Casey Scarborough", city_of_birth:"Queens"})
+> db.users.find().pretty()
+{
+  "_id" : ObjectId("52547230ff5a0c7892006cc3"),
+  "name" : "Casey Scarborough",
+  "city_of_birth" : "Queens"
+}
+> var c = db.users.findOne({'name':'Casey Scarborough'})
+> c.city_of_birth = "Stockbridge"
+Stockbridge
+> db.users.save(c)
+> db.users.find().pretty()
+{
+  "_id" : ObjectId("52547230ff5a0c7892006cc3"),
+  "name" : "Casey Scarborough",
+  "city_of_birth" : "Stockbridge"
+}
+```
+
+# JSON Revisited
+
+[Lecture Video](https://www.youtube.com/watch?v=zbYCcMWJGNY)
+
+There are only two different data types in JSON: Arrays and Dictionaries.
+
+Arrays are represented by `[` and `]`. Dictionaries are represented by `{` and `}`. These can be combined and nested in any way possible.
+
+# JSON Arrays (Quiz)
+
+[Quiz Video](https://www.youtube.com/watch?v=JkK9n6_ahVk)
+
+Write the JSON for a simple document containing a single key "fruit" that has as its value an array containing three strings: "apple", "pear", and "peach".
+
+[Answer Video](https://www.youtube.com/watch?v=ciuq7XPqHKI)
+
+# JSON Subdocuments (Quiz)
+
+[Quiz Video](https://www.youtube.com/watch?v=vrYAEH3g13M)
+
+Write a JSON document with a single key, "address" that has as it value another document with the keys 'street_address', 'city', 'state', 'zipcode', with the following values: 'street_address' is "23 Elm Drive", 'city' is "Palo Alto", 'state' is "California", 'zipcode' is "94305"
+
+[Answer Video](https://www.youtube.com/watch?v=NGp_y6BaEMw)
+
+# Introduction to Class Project (Blog)
