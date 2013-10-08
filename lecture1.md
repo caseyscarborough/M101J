@@ -230,26 +230,34 @@ Our MongoDB has a database called course and a collection called hello, with the
 You can then create a new class and create a `public static void main()` function. Add the following to it:
 
 ```java
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+
 import java.net.UnknownHostException;
 
 public class HelloWorldMongoDBStyle {
-  
-  public static void main(String[] args) {
-    // Defaults to localhost, 27017
-    MongoClient client = new MongoClient("localhost", 27017);
+    public static void main(String[] args) {
 
-    // Get the database
-    DB database = client.getDB("course");
+        MongoClient client = null;
+        try {
+            // Defaults to localhost, 27017
+            client = new MongoClient("localhost", 27017);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
 
-    // Get the hello collection
-    DBCollection = database.getCollection("hello");
+        // Get the database
+        DB database = client.getDB("course");
 
-    // Retrieve our document
-    DBObject document = collection.findOne();
-    System.out.println(document);
-  }
+        // Get the hello collection
+        DBCollection collection = database.getCollection("hello");
 
+        // Retrieve our document
+        DBObject document = collection.findOne();
+        System.out.println(document);
+    }
 }
 ```
 
