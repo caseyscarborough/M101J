@@ -4,7 +4,7 @@
 
 # What is MongoDB?
 
-* [Lecture Video](https://www.youtube.com/watch?v=q2iLKZ1LgjI)
+[Lecture Video](https://www.youtube.com/watch?v=q2iLKZ1LgjI)
 
 ## MongoDB is a non-relational JSON Document store.
 
@@ -41,7 +41,7 @@ Which of the following statements are true about MongoDB? Check all that apply.
 
 # MongoDB Relative to Relational DBs
 
-* [Lecture Video](https://www.youtube.com/watch?v=-KIC1LXxcGM)
+[Lecture Video](https://www.youtube.com/watch?v=-KIC1LXxcGM)
 
 MongoDB gives you a large depth of functionality while keeping high scalability and performance.
 
@@ -60,7 +60,7 @@ Which features did MongoDB omit in order to retain scalability?
 
 # Building an App with MongoDB
 
-* [Lecture Video](https://www.youtube.com/watch?v=swhH4q_2Ttc)
+[Lecture Video](https://www.youtube.com/watch?v=swhH4q_2Ttc)
 
 ## Application Architecture
 
@@ -80,7 +80,7 @@ _FreeMarker_ is a templating language.
 
 # Introduction to Mongo Shell
 
-* [Lecture Video](https://www.youtube.com/watch?v=f-lyGAMnNY4)
+[Lecture Video](https://www.youtube.com/watch?v=f-lyGAMnNY4)
 
 After installing MongoDB, you can start the mongo shell by issuing the `mongo` command.
 
@@ -182,7 +182,7 @@ Which of the following expressions are valid JSON documents? Check all that appl
 
 # Installing MongoDB (Mac)
 
-* [Lecture Video](https://www.youtube.com/watch?v=6VFukRETCTg#t=69)
+[Lecture Video](https://www.youtube.com/watch?v=6VFukRETCTg#t=69)
 
 I installed MongoDB a little differently than the video does, and I'm listing that way. If you'd rather do it the way the video does, you can take a look there.
 
@@ -207,11 +207,11 @@ Then run the `mongod` command to start the server, and `mongo` to start the clie
 
 ## Installing and Using Maven
 
-* [Lecture Video](https://www.youtube.com/watch?v=72vejAmaypM)
+[Lecture Video](https://www.youtube.com/watch?v=72vejAmaypM)
 
 # The MongoDB Java Driver
 
-* [Lecture Video](https://www.youtube.com/watch?v=FtyaK3pMHxw#t=229)
+[Lecture Video](https://www.youtube.com/watch?v=FtyaK3pMHxw#t=229)
 
 In order to use Mongo from Java we need the Mongo Java Driver. We're going to add the following to our Maven pom.xml file:
 
@@ -255,7 +255,7 @@ public class HelloWorldMongoDBStyle {
 
 # Intro to the Spark Web Application Framework
 
-* [Lecture Video](https://www.youtube.com/watch?v=UH-VD_ypal8)
+[Lecture Video](https://www.youtube.com/watch?v=UH-VD_ypal8)
 
 For our final project, we will be building a web application using the [Spark](http://www.sparkjava.com/) web framework. To install it in your project, add the following to your `pom.xml` file in the dependencies section.
 
@@ -293,7 +293,7 @@ Run the application and then navigate in your browser to http://localhost:4567 t
 
 # Intro to the Freemarker Templating Language
 
-* [Lecture Video](https://www.youtube.com/watch?v=_8-3K2Ds-Ok#t=86)
+[Lecture Video](https://www.youtube.com/watch?v=_8-3K2Ds-Ok#t=86)
 
 [FreeMarker](http://freemarker.org/) is a templating language for Java. We will be using it to give some styling to our webpages. To add it to your project, start by adding the following Maven dependency to `pom.xml`.
 
@@ -303,4 +303,123 @@ Run the application and then navigate in your browser to http://localhost:4567 t
     <artifactId>freemarker</artifactId>
     <version>2.3.19</version>
 </dependency>
+```
+
+Create a new file in the src/main/resources folder called `hello.ftl` and add the following template:
+
+```html
+<html>
+<head>
+    <title>Welcome!</title>
+</head>
+<body>
+    <h1>Hello ${name}!</h1>
+</body>
+</html>
+```
+
+Then create a class called `HelloWorldFreemarkerStyle` and add the following code.
+
+```java
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+public class HelloWorldFreemarkerStyle {
+    public static void main(String[] args) {
+
+        // Set the configuration for where to find the template
+        Configuration configuration = new Configuration();
+        configuration.setClassForTemplateLoading(HelloWorldFreemarkerStyle.class, "/");
+
+        try {
+            // Create a new template and string writer
+            Template helloTemplate = configuration.getTemplate("hello.ftl");
+            StringWriter writer = new StringWriter();
+
+            // Create a map to put the data bindings into
+            Map<String, Object> helloMap = new HashMap<String, Object>();
+            helloMap.put("name", "Freemarker");
+
+            // Process the template with the map and put the data into writer
+            helloTemplate.process(helloMap, writer);
+
+            // Print out the results
+            System.out.println(writer);
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+    }
+}
+```
+
+If you run this application you should get the following printed out to the console, which is the HTML for our page.
+
+```html
+<html>
+<head>
+    <title>Welcome!</title>
+</head>
+<body>
+    <h1>Hello Freemarker!</h1>
+</body>
+</html>
+```
+
+# Spark and Freemarker together
+
+[Lecture Video](https://www.youtube.com/watch?v=7fdtf9aLc2w)
+
+Create a new class called `HelloWorldSparkFreemarkerStyle` and add the following code:
+
+```java
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import spark.Request;
+import spark.Response;
+import spark.Route;
+import spark.Spark;
+
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+public class HelloWorldSparkFreemarkerStyle {
+    public static void main(String[] args) {
+
+        // Set the configuration for where to find the template
+        final Configuration configuration = new Configuration();
+        configuration.setClassForTemplateLoading(HelloWorldFreemarkerStyle.class, "/");
+
+        // Define a path for the root path
+        Spark.get(new Route("/") {
+
+            @Override
+            public Object handle(final Request request, final Response response) {
+                StringWriter writer = new StringWriter();
+                try {
+                    // Create a new template and string writer
+                    Template helloTemplate = configuration.getTemplate("hello.ftl");
+
+                    // Create a map to put the data bindings into
+                    Map<String, Object> helloMap = new HashMap<String, Object>();
+                    helloMap.put("name", "Freemarker");
+
+                    // Process the template with the map and put the data into writer
+                    helloTemplate.process(helloMap, writer);
+                } catch (Exception e) {
+                    halt(500);
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
+
+                // Return the HTML to be served by spark
+                return writer;
+            }
+        });
+    }
+}
 ```
