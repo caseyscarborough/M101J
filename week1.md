@@ -1,6 +1,4 @@
-% M101J: MongoDB for Java Developers
-% MongoDB University
-% Fall 2013
+# Week 1 Notes
 
 # What is MongoDB?
 
