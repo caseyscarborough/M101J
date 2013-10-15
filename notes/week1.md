@@ -1,10 +1,10 @@
 # Week 1 Notes
 
-# What is MongoDB?
+## What is MongoDB?
 
 [Lecture Video](https://www.youtube.com/watch?v=q2iLKZ1LgjI)
 
-## MongoDB is a non-relational JSON Document store.
+### MongoDB is a non-relational JSON Document store.
 
 This means that it does not support typical relational algebra or tables/columns/rows like your typical relational database. It stores documents in the JSON format.
 
@@ -26,7 +26,7 @@ Features that MongoDB doesn't have:
 * SQL
 * Transactions
 
-## Quiz
+### Quiz
 
 Which of the following statements are true about MongoDB? Check all that apply.
 
@@ -37,7 +37,7 @@ Which of the following statements are true about MongoDB? Check all that apply.
 
 * [Answer Video](https://www.youtube.com/watch?v=CAR42sMkXEo)
 
-# MongoDB Relative to Relational DBs
+## MongoDB Relative to Relational DBs
 
 [Lecture Video](https://www.youtube.com/watch?v=-KIC1LXxcGM)
 
@@ -45,7 +45,7 @@ MongoDB gives you a large depth of functionality while keeping high scalability 
 
 Documents are hierarchical and MongoDB doesn't support atomic transactions.
 
-## Quiz
+### Quiz
 
 Which features did MongoDB omit in order to retain scalability?
 
@@ -56,11 +56,11 @@ Which features did MongoDB omit in order to retain scalability?
 
 * [Answer Video](https://www.youtube.com/watch?v=IAvnMgvHuLw)
 
-# Building an App with MongoDB
+## Building an App with MongoDB
 
 [Lecture Video](https://www.youtube.com/watch?v=swhH4q_2Ttc)
 
-## Application Architecture
+### Application Architecture
 
 The final application we are creating will be a blog using Java and MongoDB.
 
@@ -76,7 +76,7 @@ _SparkJava_ is a micro Java web framework inspired by Java that is inspired by S
 
 _FreeMarker_ is a templating language.
 
-# Introduction to Mongo Shell
+## Introduction to Mongo Shell
 
 [Lecture Video](https://www.youtube.com/watch?v=f-lyGAMnNY4)
 
@@ -102,7 +102,7 @@ This creates the database if it isn't created yet. Here are some common commands
 { "_id" : ObjectId("52535e464a33ac3bdbb08566"), "a" : 1, "b" : 2, "c" : 3 }
 ```
 
-## Quiz
+### Quiz
 
 Which of the following expressions are valid JSON documents? Check all that apply.
 
@@ -113,7 +113,7 @@ Which of the following expressions are valid JSON documents? Check all that appl
 
 * [Answer Video](https://www.youtube.com/watch?v=YQTqdLe3W4M)
 
-# JSON Introduced
+## JSON Introduced
 
 Issue the following commands in the Mongo Shell.
 
@@ -153,7 +153,7 @@ Issue the following commands in the Mongo Shell.
 }
 ```
 
-## Quiz
+### Quiz
 
 Which of the following expressions are valid JSON documents? Check all that apply.
 
@@ -164,22 +164,22 @@ Which of the following expressions are valid JSON documents? Check all that appl
 
 * [Answer Video](https://www.youtube.com/watch?v=uWcOsdV4Iz4)
 
-# System Requirements
+## System Requirements
 
-## Operating Systems
+### Operating Systems
 
 * Mac OS X 10.8
 * Windows 7
 * Linux
 
-## Java
+### Java
 
 * Version 1.6
 * Version 1.7
 
 > _Note: You can check this by issuing the `javac --version` command from your terminal._
 
-# Installing MongoDB (Mac)
+## Installing MongoDB (Mac)
 
 [Lecture Video](https://www.youtube.com/watch?v=6VFukRETCTg#t=69)
 
@@ -204,11 +204,11 @@ port install mongodb
 
 Then run the `mongod` command to start the server, and `mongo` to start the client.
 
-## Installing and Using Maven
+### Installing and Using Maven
 
 [Lecture Video](https://www.youtube.com/watch?v=72vejAmaypM)
 
-# The MongoDB Java Driver
+## The MongoDB Java Driver
 
 [Lecture Video](https://www.youtube.com/watch?v=FtyaK3pMHxw#t=229)
 
@@ -260,7 +260,7 @@ public class HelloWorldMongoDBStyle {
 }
 ```
 
-# Intro to the Spark Web Application Framework
+## Intro to the Spark Web Application Framework
 
 [Lecture Video](https://www.youtube.com/watch?v=UH-VD_ypal8)
 
@@ -298,7 +298,7 @@ public class HelloWorldSparkStyle {
 
 Run the application and then navigate in your browser to http://localhost:4567 to see the results.
 
-# Intro to the Freemarker Templating Language
+## Intro to the Freemarker Templating Language
 
 [Lecture Video](https://www.youtube.com/watch?v=_8-3K2Ds-Ok#t=86)
 
@@ -377,7 +377,7 @@ If you run this application you should get the following printed out to the cons
 </html>
 ```
 
-# Spark and Freemarker together
+## Spark and Freemarker together
 
 [Lecture Video](https://www.youtube.com/watch?v=7fdtf9aLc2w)
 
@@ -431,7 +431,7 @@ public class HelloWorldSparkFreemarkerStyle {
 }
 ```
 
-# MongoDB, Spark, and Freemarker together
+## MongoDB, Spark, and Freemarker together
 
 [Lecture Video](https://www.youtube.com/watch?v=8S5tvJAOYzg#t=116)
 
@@ -507,19 +507,19 @@ public class HelloWorldMongoDBSparkFreemarkerStyle {
 
 If you run this and navigate to http://localhost:4567 in your browser you should be greeted with __Hello MongoDB!__
 
-# Spark framework: Handling GET Requests
+## Spark framework: Handling GET Requests
 
 [Lecture Video](https://www.youtube.com/watch?v=7t1IafamuVs#t=22)
 
 This section is very simple, and watching the video should suffice.
 
-# Spark framework: Handling POST Requests
+## Spark framework: Handling POST Requests
 
 [Lecture Video](https://www.youtube.com/watch?v=jZDuxesy5cc)
 
 This is an optional section showing how Spark handles POST requests.
 
-# Mongo is Schemaless
+## Mongo is Schemaless
 
 In MongoDB, you don't have to alter tables to add columns, etc. Each document can have a different schema.
 
@@ -545,7 +545,7 @@ Stockbridge
 }
 ```
 
-# JSON Revisited
+## JSON Revisited
 
 [Lecture Video](https://www.youtube.com/watch?v=zbYCcMWJGNY)
 
@@ -553,7 +553,7 @@ There are only two different data types in JSON: Arrays and Dictionaries.
 
 Arrays are represented by `[` and `]`. Dictionaries are represented by `{` and `}`. These can be combined and nested in any way possible.
 
-# JSON Arrays (Quiz)
+## JSON Arrays (Quiz)
 
 [Quiz Video](https://www.youtube.com/watch?v=JkK9n6_ahVk)
 
@@ -561,12 +561,10 @@ Write the JSON for a simple document containing a single key "fruit" that has as
 
 [Answer Video](https://www.youtube.com/watch?v=ciuq7XPqHKI)
 
-# JSON Subdocuments (Quiz)
+## JSON Subdocuments (Quiz)
 
 [Quiz Video](https://www.youtube.com/watch?v=vrYAEH3g13M)
 
 Write a JSON document with a single key, "address" that has as it value another document with the keys 'street_address', 'city', 'state', 'zipcode', with the following values: 'street_address' is "23 Elm Drive", 'city' is "Palo Alto", 'state' is "California", 'zipcode' is "94305"
 
 [Answer Video](https://www.youtube.com/watch?v=NGp_y6BaEMw)
-
-# Introduction to Class Project (Blog)
