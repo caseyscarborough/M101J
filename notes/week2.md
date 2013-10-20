@@ -154,3 +154,56 @@ Insert a document into the "fruit" collection with the attributes of "name" bein
 Use `findOne` on the collection `users` to find one document where the key "username" is "dwight", and retrieve only the key named "email".
 
 [Answer Video](https://www.youtube.com/watch?v=uN_wf5a3BE4)
+
+## Mongo shell, introduction to find
+
+[Lecture Video](https://www.youtube.com/watch?v=8kKfFK6a0Ak)
+
+## Mongo shell, querying using field selection
+
+[Lecture Video](https://www.youtube.com/watch?v=UIg86QjSoyY)
+
+You can use the find method in different ways. See below:
+
+```bash
+> db.scores.find( { student: 19 } );
+> db.scores.find( { student: 19, type: "essay"} );
+
+// Limit the type returned from the find method
+> db.scores.find({ student: 19, type: "essay" }, { score: true, _id: false });
+```
+
+### Quiz
+
+Supposing a scores collection similar to the one presented, how would you find all documents with an essay score equal to 50 and only retrieve the student field?
+
+```bash
+db.scores.find({ "type": "essay", "score" : 50 }, { "student" : true, "_id" : false });
+```
+
+## Querying using $gt and $lt
+
+[Lecture Video](https://www.youtube.com/watch?v=FHLrz4VGzkg)
+
+```
+// Retrieve documents that have a score greater than 95.
+> db.scores.find({ score : { $gt : 95 } });
+
+// Retrieve documents that have a score greater than
+// 40 and less or equal to 70, with the type essay
+> db.scores.find({ score : { $gt: 40, $lte : 70 }, type: "essay" });
+```
+
+### Quiz
+
+Which of these finds documents with a score between 50 and 60, inclusive?
+
+* db.scores.find({ score : { $gt : 50 , $lt : 60 } } );
+* db.scores.find({ score : { $gte : 50 , $lte : 60 } } );
+* db.scores.find({ score : { $gt : 50 , $lte : 60 } } );
+* db.scores.find({ score : { $gte : 50 , $lt : 60 } } );
+* db.scores.find({ score : { $gt : 50 } } );
+
+## Inequalities on strings
+
+[Lecture Video](https://www.youtube.com/watch?v=imCCKOevU3c)
